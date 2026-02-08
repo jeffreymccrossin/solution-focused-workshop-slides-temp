@@ -1,0 +1,65 @@
+<div class="persistent-copyright">© Jeffrey McCrossin, 2026</div>
+<script>
+  (function () {
+    function isBreakTitle(title) {
+      var t = (title || "").trim().toLowerCase();
+      return t === "break" || t.indexOf("lunch break") === 0;
+    }
+
+    function getTitleFromSection(section) {
+      if (!section) return "";
+      var heading = section.querySelector("h1, h2, h3");
+      if (!heading) return "";
+      return heading.textContent || "";
+    }
+
+    function placeBreakMarkers() {
+      var progress = document.querySelector(".reveal .progress");
+      if (!progress) return;
+
+      // Remove old markers (if re-run on resize/hash changes).
+      progress.querySelectorAll(".break-marker").forEach(function (el) {
+        el.remove();
+      });
+
+      // Use all slide sections in document order for linear decks.
+      var slides = Array.prototype.slice.call(
+        document.querySelectorAll(".reveal .slides section")
+      );
+
+      var total = slides.length;
+      if (!total || total < 2) return;
+
+      slides.forEach(function (section, idx) {
+        var title = getTitleFromSection(section);
+        if (!isBreakTitle(title)) return;
+        var pct = (idx / (total - 1)) * 100;
+        var marker = document.createElement("span");
+        marker.className = "break-marker";
+        marker.style.left = pct + "%";
+        progress.appendChild(marker);
+      });
+    }
+
+    function placeWithRetries() {
+      var tries = 0;
+      var maxTries = 60;
+      var id = setInterval(function () {
+        tries += 1;
+        placeBreakMarkers();
+        var progress = document.querySelector(".reveal .progress");
+        var hasMarkers = progress && progress.querySelector(".break-marker");
+        if ((progress && hasMarkers) || tries >= maxTries) {
+          clearInterval(id);
+        }
+      }, 200);
+    }
+
+    window.addEventListener("load", placeWithRetries);
+    // Also run immediately in case this script loads after deck init.
+    placeWithRetries();
+
+    window.addEventListener("resize", placeBreakMarkers);
+    window.addEventListener("hashchange", placeBreakMarkers);
+  })();
+</script>

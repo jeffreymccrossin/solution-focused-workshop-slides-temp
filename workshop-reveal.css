@@ -1,0 +1,709 @@
+/* Persistent footer shown on every slide. */
+.persistent-copyright {
+  position: fixed;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  z-index: 40;
+  font-size: 12px;
+  color: #444;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 4px;
+  padding: 2px 8px;
+  line-height: 1.2;
+  pointer-events: none;
+}
+
+/* Make Reveal.js progress bar easier to see. */
+.reveal .progress {
+  position: relative;
+  height: 10px;
+}
+
+.reveal .progress span {
+  height: 100%;
+}
+
+/* Runtime-placed break markers on progress bar. */
+.reveal .progress .break-marker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #c1121f;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Fallback markers in case runtime marker script is blocked. */
+.reveal .progress::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    transparent calc(29.8% - 1px),
+    #c1121f calc(29.8% - 1px),
+    #c1121f calc(29.8% + 1px),
+    transparent calc(29.8% + 1px),
+    transparent calc(53.4% - 1px),
+    #c1121f calc(53.4% - 1px),
+    #c1121f calc(53.4% + 1px),
+    transparent calc(53.4% + 1px),
+    transparent calc(70.2% - 1px),
+    #c1121f calc(70.2% - 1px),
+    #c1121f calc(70.2% + 1px),
+    transparent calc(70.2% + 1px)
+  );
+}
+
+/* Full-slide section divider styling. */
+.reveal .slides section.section-divider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+}
+
+.reveal .slides section.section-divider h2 {
+  margin: 0;
+  font-size: 0.9em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5b6675;
+}
+
+.reveal .slides section.section-divider h3 {
+  margin-top: 0.45em;
+  font-size: 1.55em;
+  line-height: 1.2;
+  color: #172033;
+}
+
+/* Tighter table style for dense reference slides. */
+.reveal .compact-table table {
+  font-size: 0.78em;
+  line-height: 1.12;
+}
+
+.reveal .compact-table th,
+.reveal .compact-table td {
+  padding: 0.2em 0.45em;
+}
+
+/* Make storyboard headings readable over image backgrounds. */
+.reveal .slides section.storyboard-panel h2 {
+  display: inline-block;
+  padding: 0.22em 0.62em;
+  border-radius: 10px;
+  background: rgba(16, 24, 40, 0.82);
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* Readable dialogue cards for coaching examples. */
+.reveal .dialogue {
+  margin: 0.45em 0;
+  padding: 0.5em 0.7em;
+  border-radius: 10px;
+  line-height: 1.35;
+}
+
+.reveal .dialogue.coach {
+  background: #edf4ff;
+  border-left: 4px solid #2b6cb0;
+}
+
+.reveal .dialogue.caregiver {
+  background: #f3f7ef;
+  border-left: 4px solid #3f7a2a;
+}
+
+/* Overlay dialogue cards on storyboard background slide. */
+.reveal .slides section.storyboard-slide h2 {
+  display: inline-block;
+  padding: 0.18em 0.5em;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.reveal .storyboard-grid {
+  margin-top: 0.5em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6em;
+}
+
+.reveal .story-card {
+  font-size: 0.64em;
+  line-height: 1.28;
+  padding: 0.52em 0.6em;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+}
+
+.reveal .story-card.coach {
+  border-left: 4px solid #2b6cb0;
+}
+
+.reveal .story-card.caregiver {
+  border-left: 4px solid #3f7a2a;
+}
+
+.reveal .slides section.storyboard-slide table {
+  margin-top: 15vh;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0.5em 9vh;
+  font-size: 0.5em;
+  line-height: 1.25;
+}
+
+.reveal .slides section.storyboard-slide thead {
+  display: none;
+}
+
+.reveal .slides section.storyboard-slide td {
+  vertical-align: top;
+  padding: 0.5em 0.55em;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+}
+
+/* Auto-animate sequence: four squares transform into concentric circles. */
+.reveal .sfc-anim-caption {
+  margin: 0.12em 0;
+  font-size: 0.62em;
+  color: #334155;
+}
+
+.reveal .sfc-level-grid {
+  margin-top: 0.2em;
+  gap: 0.45em;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.reveal .sfc-level {
+  box-sizing: border-box;
+  width: 230px;
+  height: 170px;
+  padding: 0.55em;
+  border: 2px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+  color: #0f172a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.reveal .sfc-square {
+  border-radius: 14px;
+}
+
+.reveal .sfc-level-title {
+  display: block;
+  font-weight: 700;
+  font-size: 0.62em;
+  line-height: 1.2;
+}
+
+.reveal .sfc-level-desc {
+  display: block;
+  margin-top: 0.42em;
+  font-size: 0.42em;
+  line-height: 1.26;
+  max-width: 15em;
+}
+
+.reveal .sfc-stance {
+  background: #dbeafe;
+}
+
+.reveal .sfc-assumptions {
+  background: #dcfce7;
+}
+
+.reveal .sfc-approaches {
+  background: #fef3c7;
+}
+
+.reveal .sfc-techniques {
+  background: #fee2e2;
+}
+
+.reveal .sfc-concentric-wrap {
+  min-height: 425px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.08em;
+}
+
+.reveal .sfc-concentric .sfc-level {
+  border-radius: 50%;
+  position: relative;
+  overflow: visible;
+  justify-content: center;
+  padding-top: 0;
+  box-shadow: 0 5px 16px rgba(15, 23, 42, 0.14);
+}
+
+.reveal .sfc-concentric .sfc-level::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--arc-start, 0deg),
+    var(--arc-color, rgba(30, 41, 59, 0.5)) 0 46deg,
+    transparent 46deg 360deg
+  );
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 9px),
+    #000 calc(100% - 9px)
+  );
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 9px),
+    #000 calc(100% - 9px)
+  );
+}
+
+.reveal .sfc-concentric .sfc-level .sfc-level-title {
+  position: absolute;
+  display: inline-block;
+  max-width: 8.7em;
+  padding: 0.04em 0.2em;
+  font-size: 0.52em;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #0f172a;
+  text-align: center;
+  text-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0.95),
+    1px -1px 0 rgba(255, 255, 255, 0.95),
+    -1px 1px 0 rgba(255, 255, 255, 0.95),
+    1px 1px 0 rgba(255, 255, 255, 0.95);
+  z-index: 12;
+}
+
+.reveal .sfc-concentric .sfc-level .sfc-level-desc {
+  display: none;
+}
+
+.reveal .sfc-concentric .sfc-stance .sfc-level-title {
+  top: 12%;
+  left: 31%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.reveal .sfc-concentric .sfc-assumptions .sfc-level-title {
+  top: 23%;
+  left: 79%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+}
+
+.reveal .sfc-concentric .sfc-approaches .sfc-level-title {
+  top: 76%;
+  left: 67%;
+  transform: translate(-50%, -50%);
+  z-index: 7;
+}
+
+.reveal .sfc-concentric .sfc-techniques .sfc-level-title {
+  top: 75%;
+  left: 31%;
+  transform: translate(-50%, -50%);
+  z-index: 8;
+}
+
+.reveal .sfc-concentric .sfc-stance {
+  --arc-start: 300deg;
+  --arc-color: rgba(37, 99, 235, 0.9);
+  width: 430px;
+  height: 430px;
+}
+
+.reveal .sfc-concentric .sfc-assumptions {
+  --arc-start: 22deg;
+  --arc-color: rgba(22, 163, 74, 0.88);
+  width: 338px;
+  height: 338px;
+}
+
+.reveal .sfc-concentric .sfc-approaches {
+  --arc-start: 113deg;
+  --arc-color: rgba(217, 119, 6, 0.9);
+  width: 250px;
+  height: 250px;
+}
+
+.reveal .sfc-concentric .sfc-techniques {
+  --arc-start: 205deg;
+  --arc-color: rgba(220, 38, 38, 0.9);
+  width: 170px;
+  height: 170px;
+}
+
+.reveal .sfc-proximity-line {
+  margin-top: -0.35em;
+  font-size: 0.58em;
+  color: #334155;
+}
+
+/* Option B/C base concentric ring stack. */
+.reveal .sfc-ring-stack {
+  position: relative;
+  width: 520px;
+  height: 520px;
+}
+
+.reveal .sfc-ring-stack .sfc-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 2px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 5px 16px rgba(15, 23, 42, 0.14);
+}
+
+.reveal .sfc-ring-stack .sfc-stance {
+  width: 430px;
+  height: 430px;
+  margin-top: -215px;
+  margin-left: -215px;
+}
+
+.reveal .sfc-ring-stack .sfc-assumptions {
+  width: 338px;
+  height: 338px;
+  margin-top: -169px;
+  margin-left: -169px;
+}
+
+.reveal .sfc-ring-stack .sfc-approaches {
+  width: 250px;
+  height: 250px;
+  margin-top: -125px;
+  margin-left: -125px;
+}
+
+.reveal .sfc-ring-stack .sfc-techniques {
+  width: 170px;
+  height: 170px;
+  margin-top: -85px;
+  margin-left: -85px;
+}
+
+/* Option B: curved text on arcs. */
+.reveal .sfc-ring-stack.sfc-curved .sfc-ring::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 225deg,
+    var(--arc-color, rgba(30, 41, 59, 0.55)) 0 90deg,
+    transparent 90deg 360deg
+  );
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 9px),
+    #000 calc(100% - 9px)
+  );
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 9px),
+    #000 calc(100% - 9px)
+  );
+}
+
+.reveal .sfc-ring-stack.sfc-curved .sfc-stance {
+  --arc-color: rgba(37, 99, 235, 0.92);
+}
+
+.reveal .sfc-ring-stack.sfc-curved .sfc-assumptions {
+  --arc-color: rgba(22, 163, 74, 0.9);
+}
+
+.reveal .sfc-ring-stack.sfc-curved .sfc-approaches {
+  --arc-color: rgba(217, 119, 6, 0.92);
+}
+
+.reveal .sfc-ring-stack.sfc-curved .sfc-techniques {
+  --arc-color: rgba(220, 38, 38, 0.92);
+}
+
+.reveal .sfc-curved-text-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.reveal .sfc-curved-text {
+  font-size: 19px;
+  font-weight: 700;
+  fill: #0f172a;
+  paint-order: stroke;
+  stroke: rgba(255, 255, 255, 0.96);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+}
+
+/* Option C: template-style cards around concentric center. */
+.reveal .sfc-template-concentric {
+  position: relative;
+  width: 920px;
+  height: 520px;
+}
+
+.reveal .sfc-template-concentric .sfc-template-rings {
+  position: absolute;
+  left: 310px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.reveal .sfc-template-card {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.42em;
+  min-width: 245px;
+  padding: 0.26em 0.55em;
+  border-radius: 11px;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.14);
+  font-size: 0.48em;
+  line-height: 1.2;
+  color: #1e293b;
+}
+
+.reveal .sfc-card-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.45em;
+  height: 1.45em;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #fff;
+  background: #334155;
+  flex: 0 0 auto;
+}
+
+.reveal .sfc-card-text {
+  font-weight: 600;
+}
+
+.reveal .sfc-template-card::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 44px;
+  border-top: 1.6px solid rgba(51, 65, 85, 0.45);
+}
+
+.reveal .sfc-template-card-stance {
+  left: 468px;
+  top: 82px;
+}
+
+.reveal .sfc-template-card-assumptions {
+  left: 610px;
+  top: 178px;
+}
+
+.reveal .sfc-template-card-approaches {
+  left: 610px;
+  top: 278px;
+}
+
+.reveal .sfc-template-card-techniques {
+  left: 468px;
+  top: 374px;
+}
+
+.reveal .sfc-template-card-stance::before,
+.reveal .sfc-template-card-techniques::before,
+.reveal .sfc-template-card-assumptions::before,
+.reveal .sfc-template-card-approaches::before {
+  right: 100%;
+  margin-right: 8px;
+}
+
+.reveal .sfc-template-card-stance .sfc-card-num {
+  background: #2563eb;
+}
+
+.reveal .sfc-template-card-assumptions .sfc-card-num {
+  background: #16a34a;
+}
+
+.reveal .sfc-template-card-approaches .sfc-card-num {
+  background: #d97706;
+}
+
+.reveal .sfc-template-card-techniques .sfc-card-num {
+  background: #dc2626;
+}
+
+/* Visual grid for "Assumptions Quick Reference". */
+.reveal .sfc-assumption-board {
+  width: 100%;
+  max-width: 1030px;
+  margin: 0 auto;
+}
+
+.reveal .sfc-assumption-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5em;
+}
+
+.reveal .sfc-assumption-cluster {
+  grid-column: 1 / -1;
+  border-radius: 10px;
+  border: 1px solid rgba(30, 41, 59, 0.16);
+  padding: 0.12em 0.5em;
+  font-size: 0.36em;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #0f172a;
+}
+
+.reveal .sfc-cluster-direction {
+  background: #dbeafe;
+}
+
+.reveal .sfc-cluster-resource {
+  background: #dcfce7;
+}
+
+.reveal .sfc-cluster-change {
+  background: #ffedd5;
+}
+
+.reveal .sfc-assumption-card {
+  display: flex;
+  gap: 0.44em;
+  align-items: flex-start;
+  border-radius: 12px;
+  border: 1px solid rgba(30, 41, 59, 0.15);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  padding: 0.44em 0.52em;
+  min-height: 100px;
+}
+
+.reveal .sfc-assumption-num {
+  width: 2.05em;
+  height: 2.05em;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.5em;
+  color: #fff;
+  background: #334155;
+  flex: 0 0 auto;
+}
+
+.reveal .sfc-assumption-text {
+  font-size: 0.56em;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #0f172a;
+}
+
+.reveal .sfc-assumption-direction {
+  background: #eff6ff;
+}
+
+.reveal .sfc-assumption-direction .sfc-assumption-num {
+  background: #2563eb;
+}
+
+.reveal .sfc-assumption-resource {
+  background: #ecfdf5;
+}
+
+.reveal .sfc-assumption-resource .sfc-assumption-num {
+  background: #16a34a;
+}
+
+.reveal .sfc-assumption-change {
+  background: #fff7ed;
+}
+
+.reveal .sfc-assumption-change .sfc-assumption-num {
+  background: #d97706;
+}
+
+/* Visual intro for "Assumptions of SFC". */
+.reveal .sfc-assumption-intro {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.reveal .sfc-assumption-lead {
+  margin-bottom: 0.42em;
+  font-size: 0.6em;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.reveal .sfc-assumption-pill-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5em;
+}
+
+.reveal .sfc-assumption-pill {
+  border-radius: 12px;
+  border: 1px solid rgba(30, 41, 59, 0.15);
+  background: #f8fafc;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  padding: 0.5em 0.58em;
+  font-size: 0.48em;
+  line-height: 1.28;
+  color: #1e293b;
+}
+
+.reveal .sfc-assumption-pill i {
+  margin-right: 0.3em;
+  color: #334155;
+}
+
+.reveal .sfc-assumption-pill-wide {
+  grid-column: 1 / -1;
+}
+
+.reveal .sfc-assumption-source {
+  margin-top: 0.45em;
+  font-size: 0.36em;
+  color: #475569;
+}
+
+.reveal .sfc-assumption-source a {
+  color: #334155;
+}
+
