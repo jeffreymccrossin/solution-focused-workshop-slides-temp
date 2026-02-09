@@ -106,6 +106,11 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
+/* Push storyboard dialogue rectangles lower on image slides. */
+.reveal .slides section.storyboard-panel .storyboard-caption {
+  margin-top: 54vh;
+}
+
 /* Readable dialogue cards for coaching examples. */
 .reveal .dialogue {
   margin: 0.45em 0;
@@ -707,3 +712,329 @@
   color: #334155;
 }
 
+/* Auto-animate sequence: approach labels -> expanded blocks. */
+.reveal .sfc-approach-anim-grid {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0.2em auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.56em;
+}
+
+.reveal .sfc-approach-anim-card {
+  border-radius: 12px;
+  border: 1px solid rgba(30, 41, 59, 0.16);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  padding: 0.54em 0.64em;
+  min-height: 116px;
+  color: #0f172a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reveal .sfc-approach-anim-title {
+  display: block;
+  font-size: 0.52em;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.reveal .sfc-approach-anim-desc {
+  display: block;
+  margin-top: 0.4em;
+  font-size: 0.4em;
+  line-height: 1.28;
+  color: #334155;
+}
+
+/* Step 1: compact cards (labels only) that expand in step 2. */
+.reveal .slides section.sfc-approach-step1 .sfc-approach-anim-grid {
+  max-width: 900px;
+  gap: 0.36em;
+  margin-top: 0.34em;
+}
+
+.reveal .slides section.sfc-approach-step1 .sfc-approach-anim-card {
+  min-height: 78px;
+  padding: 0.3em 0.42em;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+
+.reveal .slides section.sfc-approach-step1 .sfc-approach-anim-title {
+  font-size: 0.46em;
+}
+
+/* Step 2: expanded cards with larger text blocks. */
+.reveal .slides section.sfc-approach-step2 .sfc-approach-anim-grid {
+  max-width: 1140px;
+  gap: 0.64em;
+}
+
+.reveal .slides section.sfc-approach-step2 .sfc-approach-anim-card {
+  min-height: 152px;
+  padding: 0.68em 0.78em;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.11);
+}
+
+.reveal .slides section.sfc-approach-step2 .sfc-approach-anim-title {
+  font-size: 0.56em;
+}
+
+.reveal .slides section.sfc-approach-step2 .sfc-approach-anim-desc {
+  font-size: 0.44em;
+}
+
+.reveal .sfc-approach-anim-solution {
+  background: #eff6ff;
+}
+
+.reveal .sfc-approach-anim-exceptions {
+  background: #ecfdf5;
+}
+
+.reveal .sfc-approach-anim-coping {
+  background: #fffbeb;
+}
+
+.reveal .sfc-approach-anim-scaling {
+  background: #f0f9ff;
+}
+
+.reveal .sfc-approach-anim-compliments {
+  background: #fff7ed;
+}
+
+.reveal .sfc-approach-anim-join {
+  background: #fef2f2;
+}
+
+/* Size bump for all "Key Approaches to SFC" slides. */
+.reveal .slides section.sfc-key-approaches h2 {
+  font-size: 1.14em;
+}
+
+.reveal .slides section.sfc-key-approaches ul {
+  font-size: 0.95em;
+  line-height: 1.28;
+}
+
+.reveal .slides section.sfc-key-approaches .sfc-approach-anim-title {
+  font-size: 0.6em;
+}
+
+.reveal .slides section.sfc-key-approaches .sfc-approach-anim-desc {
+  font-size: 0.46em;
+}
+
+.reveal .slides section.sfc-key-approaches.sfc-approach-step1 .sfc-approach-anim-title {
+  font-size: 0.52em;
+}
+
+.reveal .slides section.sfc-key-approaches.sfc-approach-step2 .sfc-approach-anim-title {
+  font-size: 0.64em;
+}
+
+.reveal .slides section.sfc-key-approaches.sfc-approach-step2 .sfc-approach-anim-desc {
+  font-size: 0.5em;
+}
+
+@media (max-width: 980px) {
+  .reveal .sfc-approach-anim-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .reveal .slides section.sfc-approach-step2 .sfc-approach-anim-card {
+    min-height: 126px;
+    padding: 0.58em 0.64em;
+  }
+
+  .reveal .slides section.sfc-approach-step2 .sfc-approach-anim-title {
+    font-size: 0.5em;
+  }
+
+  .reveal .slides section.sfc-approach-step2 .sfc-approach-anim-desc {
+    font-size: 0.4em;
+  }
+
+  .reveal .slides section.sfc-key-approaches h2 {
+    font-size: 1.04em;
+  }
+
+  .reveal .slides section.sfc-key-approaches ul {
+    font-size: 0.88em;
+  }
+
+  .reveal .slides section.sfc-key-approaches.sfc-approach-step2 .sfc-approach-anim-title {
+    font-size: 0.56em;
+  }
+
+  .reveal .slides section.sfc-key-approaches.sfc-approach-step2 .sfc-approach-anim-desc {
+    font-size: 0.44em;
+  }
+}
+
+/* Visual layout for "Summarize, Validate, and Empathize". */
+.reveal .sfc-sve-board {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0.1em auto 0;
+}
+
+.reveal .sfc-sve-lead {
+  margin-bottom: 0.38em;
+  font-size: 0.82em;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.reveal .sfc-sve-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.52em;
+}
+
+.reveal .sfc-sve-card {
+  border-radius: 12px;
+  border: 1px solid rgba(30, 41, 59, 0.15);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  padding: 0.62em 0.7em;
+  min-height: 198px;
+}
+
+.reveal .sfc-sve-card-title {
+  margin-bottom: 0.28em;
+  font-size: 0.68em;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #0f172a;
+}
+
+.reveal .sfc-sve-card p {
+  margin: 0;
+  font-size: 0.58em;
+  line-height: 1.32;
+  color: #1e293b;
+}
+
+.reveal .sfc-sve-summary {
+  background: #eff6ff;
+}
+
+.reveal .sfc-sve-validate {
+  background: #ecfdf5;
+}
+
+.reveal .sfc-sve-empathize {
+  background: #fff7ed;
+}
+
+.reveal .sfc-sve-check {
+  margin-top: 0.45em;
+  border-radius: 12px;
+  border: 1px solid rgba(30, 41, 59, 0.16);
+  background: #f8fafc;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  padding: 0.42em 0.62em;
+}
+
+.reveal .sfc-sve-check p {
+  margin: 0;
+  font-size: 0.72em;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #0f172a;
+}
+
+@media (max-width: 980px) {
+  .reveal .sfc-sve-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reveal .sfc-sve-card {
+    min-height: unset;
+  }
+}
+
+/* Section 5 technique slides: fixed left map + changing right content. */
+.reveal .slides section.sfc-technique-columns .columns {
+  align-items: stretch;
+  gap: 0.7em;
+}
+
+.reveal .sfc-technique-panel {
+  border-radius: 14px;
+  border: 1px solid rgba(30, 41, 59, 0.16);
+  background: #f8fafc;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  padding: 0.55em 0.6em;
+}
+
+.reveal .sfc-technique-panel-title {
+  margin-bottom: 0.38em;
+  font-size: 0.62em;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.reveal .sfc-technique-tab {
+  border-radius: 10px;
+  border: 1px solid rgba(30, 41, 59, 0.15);
+  background: #ffffff;
+  padding: 0.34em 0.5em;
+  margin-bottom: 0.32em;
+  font-size: 0.54em;
+  line-height: 1.2;
+  color: #334155;
+}
+
+.reveal .sfc-technique-tab.is-active {
+  border-color: rgba(37, 99, 235, 0.38);
+  background: #dbeafe;
+  color: #0f172a;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.16);
+}
+
+.reveal .sfc-technique-panel-foot {
+  margin-top: 0.52em;
+  font-size: 0.46em;
+  line-height: 1.3;
+  color: #475569;
+}
+
+.reveal .slides section.sfc-technique-columns .column h3 {
+  margin-top: 0.02em;
+  margin-bottom: 0.32em;
+  font-size: 0.92em;
+  line-height: 1.15;
+}
+
+.reveal .slides section.sfc-technique-columns .column ul {
+  font-size: 0.74em;
+  line-height: 1.34;
+}
+
+@media (max-width: 980px) {
+  .reveal .sfc-technique-panel {
+    margin-bottom: 0.45em;
+  }
+
+  .reveal .sfc-technique-panel-title {
+    font-size: 0.56em;
+  }
+
+  .reveal .sfc-technique-tab {
+    font-size: 0.48em;
+  }
+
+  .reveal .slides section.sfc-technique-columns .column h3 {
+    font-size: 0.8em;
+  }
+
+  .reveal .slides section.sfc-technique-columns .column ul {
+    font-size: 0.64em;
+  }
+}
