@@ -18,45 +18,49 @@
 /* Make Reveal.js progress bar easier to see. */
 .reveal .progress {
   position: relative;
-  height: 10px;
+  height: 12px;
 }
 
 .reveal .progress span {
   height: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 /* Runtime-placed break markers on progress bar. */
 .reveal .progress .break-marker {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: #c1121f;
-  z-index: 3;
+  top: -2px;
+  bottom: -2px;
+  width: 4px;
+  border-radius: 3px;
+  background: #d90429;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.95), 0 0 6px rgba(217, 4, 41, 0.55);
+  z-index: 10;
   pointer-events: none;
 }
 
 /* Fallback markers in case runtime marker script is blocked. */
-.reveal .progress::after {
+.reveal .progress:not(.break-markers-ready)::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 9;
   pointer-events: none;
   background: linear-gradient(
     to right,
-    transparent calc(29.8% - 1px),
-    #c1121f calc(29.8% - 1px),
-    #c1121f calc(29.8% + 1px),
-    transparent calc(29.8% + 1px),
-    transparent calc(53.4% - 1px),
-    #c1121f calc(53.4% - 1px),
-    #c1121f calc(53.4% + 1px),
-    transparent calc(53.4% + 1px),
-    transparent calc(70.2% - 1px),
-    #c1121f calc(70.2% - 1px),
-    #c1121f calc(70.2% + 1px),
-    transparent calc(70.2% + 1px)
+    transparent calc(31.2% - 2px),
+    #d90429 calc(31.2% - 2px),
+    #d90429 calc(31.2% + 2px),
+    transparent calc(31.2% + 2px),
+    transparent calc(58.0% - 2px),
+    #d90429 calc(58.0% - 2px),
+    #d90429 calc(58.0% + 2px),
+    transparent calc(58.0% + 2px),
+    transparent calc(80.4% - 2px),
+    #d90429 calc(80.4% - 2px),
+    #d90429 calc(80.4% + 2px),
+    transparent calc(80.4% + 2px)
   );
 }
 
@@ -219,12 +223,12 @@
 
 /* Push storyboard dialogue rectangles lower on image slides. */
 .reveal .slides section.storyboard-panel .storyboard-caption {
-  margin-top: 54vh;
+  margin-top: min(47vh, 320px);
 }
 
 /* Pull this specific problem-talk caption up for better image balance. */
 .reveal .slides section.storyboard-panel .storyboard-caption.storyboard-caption-problem-talk {
-  margin-top: 43vh;
+  margin-top: min(37vh, 255px);
 }
 
 /* Readable dialogue cards for coaching examples. */

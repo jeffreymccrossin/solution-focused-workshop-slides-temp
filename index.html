@@ -3922,13 +3922,35 @@ A caregiver says: “This week was rough, but I still got my son to school three
 <li>Coach observation skills: noticing exceptions, changes, and hopes.</li>
 </ul>
 </section>
-<section id="bridge-skills---family-partnering-and-joining" class="slide level2">
-<h2>Bridge: Skills -&gt; Family Partnering and Joining</h2>
-<ul>
-<li>Skills work best when families feel respected and included.</li>
-<li>Joining protects alliance under stress.</li>
-<li>Partnering keeps plans realistic, culturally responsive, and sustainable.</li>
-</ul>
+<section id="what-do-we-mean-by-resilience" class="slide level2">
+<h2>What Do We Mean By Resilience?</h2>
+
+<img data-src="images/ungar_resilience_2019.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:58.0%" alt="Resilience process model from Ungar (2019)"><div style="text-align:left; font-size:0.68em; margin-top:0.45em; margin-left:4%; color:#334155;">
+<p><em>Resilience Process</em></p>
+</div>
+<div style="font-size: 0.5em;">
+<p><a href="https://doi-org.libaccess.lib.mcmaster.ca/10.1016/j.chiabu.2019.104098">Ungar (2019), Child Abuse &amp; Neglect</a></p>
+</div>
+</section>
+<section id="double-abcx-model" class="slide level2">
+<h2>Double ABCX Model</h2>
+
+<img data-src="https://www.researchgate.net/profile/Paul-Fouche-6/publication/283672121/figure/fig1/AS:669003819270149@1536514348202/The-Double-ABCX-Model-of-Adjustment-and-Adaptation-McCubbin-Patterson-1982_W640.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:88.0%" alt="The Double ABCX Model of Adjustment and Adaptation"><div style="font-size: 0.5em;">
+<p>Model attribution: McCubbin &amp; Patterson (1982). <a href="https://www.researchgate.net/profile/Paul-Fouche-6/publication/283672121/figure/fig1/AS:669003819270149@1536514348202/The-Double-ABCX-Model-of-Adjustment-and-Adaptation-McCubbin-Patterson-1982_W640.jpg">Image source (ResearchGate)</a></p>
+</div>
+</section>
+<section id="resilience-and-peer-support-model" class="slide level2">
+<h2>Resilience and Peer Support Model</h2>
+
+<img data-src="images/resilience_peer_support_slide1.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Model of resilience and caregiver peer support"><div style="font-size: 0.5em;">
+<p><a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/cch.13069">Parent-to-parent support for childhood neurodisability: A qualitative analysis and proposed model of peer support and family resilience (McCrossin &amp; Lach, 2023)</a></p>
+</div>
+<!-- ## Bridge: Skills -> Family Partnering and Joining
+
+-   Skills work best when families feel respected and included.
+-   Joining protects alliance under stress.
+-   Partnering keeps plans realistic, culturally responsive, and sustainable.
+ -->
 </section>
 <section id="break-1" class="slide level2">
 <h2>Break</h2>
@@ -5456,7 +5478,9 @@ Bridge close:
       (function () {
         function isBreakTitle(title) {
           var t = (title || "").trim().toLowerCase();
-          return t === "break" || t.indexOf("lunch break") === 0;
+          return (
+            /^break(\b|[^a-z])/.test(t) || /^lunch break(\b|[^a-z])/.test(t)
+          );
         }
 
         function getTitleFromSection(section) {
@@ -5469,19 +5493,24 @@ Bridge close:
         function placeBreakMarkers() {
           var progress = document.querySelector(".reveal .progress");
           if (!progress) return;
+          progress.classList.remove("break-markers-ready");
 
           // Remove old markers (if re-run on resize/hash changes).
           progress.querySelectorAll(".break-marker").forEach(function (el) {
             el.remove();
           });
 
-          // Use all slide sections in document order for linear decks.
-          var slides = Array.prototype.slice.call(
-            document.querySelectorAll(".reveal .slides section")
-          );
+          // Prefer Reveal's linearized slide order (handles stacks/vertical slides).
+          var slides =
+            window.Reveal && typeof window.Reveal.getSlides === "function"
+              ? window.Reveal.getSlides()
+              : Array.prototype.slice.call(
+                  document.querySelectorAll(".reveal .slides section")
+                );
 
           var total = slides.length;
           if (!total || total < 2) return;
+          var markerCount = 0;
 
           slides.forEach(function (section, idx) {
             var title = getTitleFromSection(section);
@@ -5491,7 +5520,12 @@ Bridge close:
             marker.className = "break-marker";
             marker.style.left = pct + "%";
             progress.appendChild(marker);
+            markerCount += 1;
           });
+
+          if (markerCount > 0) {
+            progress.classList.add("break-markers-ready");
+          }
         }
 
         function placeWithRetries() {

@@ -3,7 +3,9 @@
   (function () {
     function isBreakTitle(title) {
       var t = (title || "").trim().toLowerCase();
-      return t === "break" || t.indexOf("lunch break") === 0;
+      return (
+        /^break(\b|[^a-z])/.test(t) || /^lunch break(\b|[^a-z])/.test(t)
+      );
     }
 
     function getTitleFromSection(section) {
@@ -16,19 +18,24 @@
     function placeBreakMarkers() {
       var progress = document.querySelector(".reveal .progress");
       if (!progress) return;
+      progress.classList.remove("break-markers-ready");
 
       // Remove old markers (if re-run on resize/hash changes).
       progress.querySelectorAll(".break-marker").forEach(function (el) {
         el.remove();
       });
 
-      // Use all slide sections in document order for linear decks.
-      var slides = Array.prototype.slice.call(
-        document.querySelectorAll(".reveal .slides section")
-      );
+      // Prefer Reveal's linearized slide order (handles stacks/vertical slides).
+      var slides =
+        window.Reveal && typeof window.Reveal.getSlides === "function"
+          ? window.Reveal.getSlides()
+          : Array.prototype.slice.call(
+              document.querySelectorAll(".reveal .slides section")
+            );
 
       var total = slides.length;
       if (!total || total < 2) return;
+      var markerCount = 0;
 
       slides.forEach(function (section, idx) {
         var title = getTitleFromSection(section);
@@ -38,7 +45,12 @@
         marker.className = "break-marker";
         marker.style.left = pct + "%";
         progress.appendChild(marker);
+        markerCount += 1;
       });
+
+      if (markerCount > 0) {
+        progress.classList.add("break-markers-ready");
+      }
     }
 
     function placeWithRetries() {
